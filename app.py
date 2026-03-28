@@ -1,35 +1,34 @@
 from flask import Flask, render_template, request
-import joblib
-import numpy as np
 
 app = Flask(__name__)
-
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    if request.method == 'POST':
+        income = float(request.form['income'])
+        credit_score = float(request.form['credit_score'])
+        loan_amount = float(request.form['loan_amount'])
+        employment = int(request.form['employment'])
+
+        # Simple logic (no ML for now)
+        if income > 30000 and credit_score > 700 and employment == 1:
+            result = "Loan Approved ✅"
+            status = "success"
+        else:
+            result = "Loan Rejected ❌"
+            status = "failure"
+
+        return render_template('result.html', prediction=result, status=status)
+
+    return render_template('index.html')
+
 @app.route('/healthz')
 def health():
     return "OK", 200
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    income = float(request.form['income'])
-    credit_score = float(request.form['credit_score'])
-    loan_amount = float(request.form['loan_amount'])
-    employment = int(request.form['employment'])
-
-    features = np.array([[income, credit_score, loan_amount, employment]])
-    scaled_features = scaler.transform(features)
-
-    prediction = model.predict(scaled_features)[0]
-
-    result = "Approved ✅" if prediction == 1 else "Not Approved ❌"
-
-    return render_template('result.html', prediction=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

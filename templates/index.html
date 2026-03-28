@@ -6,21 +6,39 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>Loan Approval Predictor</h2>
+<div class="wrapper">
+    <div class="card">
+        <h2>💰 Loan Approval Predictor</h2>
 
-    <form action="/predict" method="POST">
-        <input type="number" name="income" placeholder="Income" required>
-        <input type="number" name="credit_score" placeholder="Credit Score" required>
-        <input type="number" name="loan_amount" placeholder="Loan Amount" required>
+        <form action="/predict" method="POST">
 
-        <select name="employment">
-            <option value="1">Employed</option>
-            <option value="0">Not Employed</option>
-        </select>
+            <div class="input-group">
+                <label>Income</label>
+                <input type="number" name="income" required>
+            </div>
 
-        <button type="submit">Check Loan Status</button>
-    </form>
+            <div class="input-group">
+                <label>Credit Score</label>
+                <input type="number" name="credit_score" required>
+            </div>
+
+            <div class="input-group">
+                <label>Loan Amount</label>
+                <input type="number" name="loan_amount" required>
+            </div>
+
+            <div class="input-group">
+                <label>Employment</label>
+                <select name="employment">
+                    <option value="1">Employed</option>
+                    <option value="0">Not Employed</option>
+                </select>
+            </div>
+
+            <button type="submit">Check Loan Status</button>
+
+        </form>
+    </div>
 </div>
 
 </body>

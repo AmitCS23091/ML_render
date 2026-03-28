@@ -6,9 +6,18 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>{{ prediction }}</h2>
-    <a href="/">Try Again</a>
+<div class="wrapper">
+    <div class="card">
+
+        <h2>Result</h2>
+
+        <div class="result-box {{ status }}">
+            {{ prediction }}
+        </div>
+
+        <a href="/" class="btn">Try Again</a>
+
+    </div>
 </div>
 
 </body>

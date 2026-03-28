@@ -1,34 +1,59 @@
 body {
+    margin: 0;
     font-family: Arial;
-    background: #f4f4f4;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 300px;
     text-align: center;
 }
 
-.container {
-    margin-top: 100px;
-    background: white;
-    padding: 30px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px gray;
+.input-group {
+    margin: 10px 0;
+    text-align: left;
 }
 
 input, select {
-    width: 90%;
-    padding: 10px;
-    margin: 10px;
+    width: 100%;
+    padding: 8px;
 }
 
 button {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 10px;
     background: blue;
     color: white;
     border: none;
-    cursor: pointer;
+    margin-top: 10px;
 }
 
-button:hover {
-    background: darkblue;
+.result-box {
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.success {
+    background: lightgreen;
+}
+
+.failure {
+    background: pink;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px;
+    background: blue;
+    color: white;
 }
